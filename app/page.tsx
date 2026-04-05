@@ -33,11 +33,17 @@ type GallerySlide = {
   title: string;
 };
 
+type FAQItem = {
+  answer: string;
+  question: string;
+};
+
 const CALENDAR_EMBED_URL =
   "https://calendar.google.com/calendar/embed?src=poshpaws.dogcare%40gmail.com&ctz=America%2FLos_Angeles";
 
 const navigationLinks: NavLink[] = [
   { href: "#pricing", label: "Pricing" },
+  { href: "#faq", label: "FAQ" },
   { href: "#book", label: "Let's connect" },
 ];
 
@@ -45,19 +51,19 @@ const benefitCards: BenefitCard[] = [
   {
     title: "Care that feels familiar",
     description:
-      "Each stay is tailored to your dog’s routine, personality, and comfort level so they can settle in and feel at home.",
+      "We provide the comforts that help dogs settle in (beds, bowls, toys, and lots of love) so you can pack their basics and know they’ll feel right at home.",
     detail: "Private, attentive care shaped around your pup.",
   },
   {
-    title: "You’ll always know how they’re doing",
+    title: "Peace of mind",
     description:
-      "Daily photo and text updates help you stay connected and give you peace of mind while you’re away.",
+      "Each evening, you’ll get a thoughtful photo update so you can see how your furry friends spent their day and is feeling while you’re away.",
     detail: "Clear communication is part of every stay.",
   },
   {
     title: "Easy pickup, no extra fees",
     description:
-      "Pickup is available when you need it, without added charges or unnecessary stress.",
+      "Pickup is simple and stress-free, with no added fees for late evening arrivals. Plus, Posh Paws is located close to the Reno-Tahoe airport, making travel days easier.",
     detail: "Simple, accommodating care from start to finish.",
   },
 ];
@@ -92,6 +98,69 @@ const bookingNoteCards: BookingNoteCard[] = [
     title: "Carefully considered stays",
     description:
       "I keep my client list small and accept bookings intentionally to make sure each dog is a good fit for my home and routine.",
+  },
+];
+
+const faqItems: FAQItem[] = [
+  {
+    question: "Do you offer private dog boarding in Reno?",
+    answer:
+      "Yes. Posh Paws offers private dog boarding in Reno with only one client dog at a time, creating a quieter, more personalized stay for every dog.",
+  },
+  {
+    question: "Do you provide dog beds, food bowls, and toys?",
+    answer:
+      "Yes. We provide beds, bowls, toys, and all the comforts that help dogs feel relaxed and at home during their stay.",
+  },
+  {
+    question: "Do you send daily updates?",
+    answer:
+      "Yes. I send photos and a personal end-of-day update every day around 5:00 p.m. so you can stay connected and feel reassured while you’re away.",
+  },
+  {
+    question: "Do you charge extra for late pickup?",
+    answer:
+      "No. Pricing is straightforward, with no extra late pickup fee, even for evening pickups after 10:00 p.m.",
+  },
+  {
+    question: "What types of dogs are the best fit for Posh Paws?",
+    answer:
+      "Posh Paws welcomes all kinds of dogs, including puppies, anxious dogs, and dogs who need medication. Each stay is tailored to your dog’s routine, personality, and comfort level.",
+  },
+  {
+    question: "Do you board multiple client dogs at the same time?",
+    answer:
+      "Usually, no. I do not board two client dogs at the same time unless I check with you first and everyone is comfortable with the arrangement.",
+  },
+  {
+    question: "How far are you from the Reno airport?",
+    answer:
+      "Posh Paws is about 15 minutes from the Reno airport, making drop-off and pickup easy for traveling pet parents. You are also welcome to leave your car in the driveway or on our street if you decide to uber.",
+  },
+  {
+    question: "Do you offer dog boarding for anxious dogs in Reno?",
+    answer:
+      "Yes. Anxious dogs do especially well here because they receive personalized care in a calm home environment with no kids and plenty of one-on-one attention.",
+  },
+  {
+    question: "Can you administer medication during my dog’s stay?",
+    answer:
+      "Yes. I am certified to administer medication and have experience caring for dogs who need extra support during their stay.",
+  },
+  {
+    question: "What should I pack for my dog’s boarding stay?",
+    answer:
+      "Please bring your dog’s food, medications, and any favorite comfort items. I provide most essentials, so you usually only need to pack the basics.",
+  },
+  {
+    question: "Do you offer holiday dog boarding in Reno?",
+    answer:
+      "Yes. I offer holiday dog boarding and am usually home for the holidays. Holiday stays are $10 more per visit.",
+  },
+  {
+    question: "How do I pay for dog boarding?",
+    answer:
+      "I send an invoice on drop-off day, and payment is due by pickup. I accept credit card, cash, and ACH.",
   },
 ];
 
@@ -167,10 +236,13 @@ function SectionHeading({
 export default function Home() {
   const [activeClientSlide, setActiveClientSlide] = useState(0);
   const [formError, setFormError] = useState<string | null>(null);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
   const currentClientSlide = clientGallerySlides[activeClientSlide];
+  const visibleFaqItems = showAllFaqs ? faqItems : faqItems.slice(0, 5);
 
   async function handleInquirySubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -254,7 +326,7 @@ export default function Home() {
             <div className="grid gap-10 lg:grid-cols-[1.18fr_0.82fr] lg:items-start">
               <div className="flex flex-col">
                 <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">
-                  Reno-Tahoe
+                  Reno-Tahoe Dog Boarding
                 </p>
                 <h1 className="mt-5 max-w-2xl font-display text-5xl leading-[0.95] tracking-tight text-[var(--color-ink)] sm:text-6xl">
                   Your pet&apos;s favorite vacation
@@ -384,9 +456,9 @@ export default function Home() {
               >
                 <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[var(--color-accent)]">
                   {index === 0
-                    ? "Personalized care"
+                    ? "The comfort of home"
                     : index === 1
-                      ? "Daily updates"
+                      ? "Thoughtful updates"
                       : "Flexible pickup"}
                 </p>
                 <h3 className="mt-4 font-display text-2xl tracking-tight text-[var(--color-ink)]">
@@ -583,6 +655,87 @@ export default function Home() {
               </p>
             ) : null}
           </form>
+        </section>
+
+        <section
+          id="faq"
+          className="scroll-mt-28 rounded-[2rem] border border-[color:rgba(45,63,54,0.08)] bg-[linear-gradient(180deg,rgba(45,63,54,0.98),rgba(54,81,68,0.98))] p-8 text-white shadow-[0_24px_60px_rgba(32,46,39,0.18)] sm:p-10"
+        >
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[color:rgba(255,236,221,0.82)]">
+              FAQ
+            </p>
+            <h2 className="mt-4 font-display text-3xl tracking-tight text-white sm:text-4xl">
+              Dog boarding FAQ for Reno pet parents
+            </h2>
+          </div>
+
+          <div className="mt-8 space-y-3">
+            {visibleFaqItems.map((item, index) => {
+              const isOpen = openFaqIndex === index;
+
+              return (
+                <article
+                  key={item.question}
+                  className="overflow-hidden rounded-[1.5rem] border border-[color:rgba(255,255,255,0.12)] bg-[color:rgba(255,255,255,0.08)]"
+                >
+                  <h3>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setOpenFaqIndex((currentIndex) =>
+                          currentIndex === index ? null : index
+                        )
+                      }
+                      aria-expanded={isOpen}
+                      aria-controls={`faq-panel-${index}`}
+                      className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition hover:bg-[color:rgba(255,255,255,0.05)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+                    >
+                      <span className="text-lg font-semibold leading-7 text-white sm:text-xl">
+                        {item.question}
+                      </span>
+                      <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[color:rgba(255,255,255,0.14)] bg-[color:rgba(255,255,255,0.08)] text-2xl leading-none text-[color:rgba(255,236,221,0.9)]">
+                        {isOpen ? "−" : "+"}
+                      </span>
+                    </button>
+                  </h3>
+
+                  {isOpen ? (
+                    <div
+                      id={`faq-panel-${index}`}
+                      className="border-t border-[color:rgba(255,255,255,0.1)] px-5 py-4"
+                    >
+                      <p className="max-w-4xl text-base leading-7 text-[color:rgba(250,245,239,0.86)]">
+                        {item.answer}
+                      </p>
+                    </div>
+                  ) : null}
+                </article>
+              );
+            })}
+          </div>
+
+          {faqItems.length > 5 ? (
+            <div className="mt-6 flex justify-center">
+              <button
+                type="button"
+                onClick={() => {
+                  setShowAllFaqs((currentValue) => {
+                    const nextValue = !currentValue;
+
+                    if (!nextValue && openFaqIndex !== null && openFaqIndex > 4) {
+                      setOpenFaqIndex(0);
+                    }
+
+                    return nextValue;
+                  });
+                }}
+                className="inline-flex items-center justify-center rounded-full border border-[color:rgba(255,255,255,0.14)] bg-[color:rgba(255,255,255,0.08)] px-5 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-[color:rgba(255,236,221,0.9)] transition hover:bg-[color:rgba(255,255,255,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+              >
+                {showAllFaqs ? "View fewer FAQs" : "View more FAQs"}
+              </button>
+            </div>
+          ) : null}
         </section>
 
       </main>
