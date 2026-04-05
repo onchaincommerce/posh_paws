@@ -37,7 +37,6 @@ const CALENDAR_EMBED_URL =
   "https://calendar.google.com/calendar/embed?src=poshpaws.dogcare%40gmail.com&ctz=America%2FLos_Angeles";
 
 const navigationLinks: NavLink[] = [
-  { href: "#benefits", label: "What You Get" },
   { href: "#pricing", label: "Pricing" },
   { href: "#book", label: "Let's Connect" },
 ];
@@ -249,7 +248,7 @@ export default function Home() {
 
       <main id="top" className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 pb-16 pt-6 sm:px-6 lg:px-8 lg:pb-24">
         <section className="scroll-mt-28">
-          <div className="overflow-hidden rounded-[2rem] border border-[color:rgba(45,63,54,0.08)] bg-[var(--color-card)] p-8 shadow-[0_28px_80px_rgba(66,51,36,0.09)] sm:p-10">
+          <div className="overflow-hidden rounded-[2rem] border border-[color:rgba(45,63,54,0.08)] bg-[var(--color-card)] px-8 pb-8 pt-12 shadow-[0_28px_80px_rgba(66,51,36,0.09)] sm:px-10 sm:pb-10 sm:pt-14">
             <div className="grid gap-10 lg:grid-cols-[1.18fr_0.82fr] lg:items-start">
               <div className="flex flex-col">
                 <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">
@@ -265,7 +264,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="flex items-start justify-center lg:-mt-8">
+              <div className="flex items-start justify-center lg:-mt-16">
                 <div className="relative aspect-square w-full max-w-[24rem] overflow-hidden rounded-[1.8rem] bg-transparent">
                   <Image
                     src="/public.png"
@@ -345,7 +344,8 @@ export default function Home() {
                     fill
                     unoptimized
                     sizes="(min-width: 1024px) 36rem, 100vw"
-                    className="object-cover object-center"
+                    className="object-cover"
+                    style={{ objectPosition: "center 65%" }}
                   />
                 </div>
               ) : (
