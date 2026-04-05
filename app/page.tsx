@@ -403,10 +403,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section
-          id="book"
-          className="scroll-mt-28 rounded-[2rem] border border-[color:rgba(45,63,54,0.08)] bg-white/85 p-8 shadow-[0_18px_50px_rgba(66,51,36,0.06)] sm:p-10"
-        >
+        <section className="rounded-[2rem] border border-[color:rgba(45,63,54,0.08)] bg-white/85 p-8 shadow-[0_18px_50px_rgba(66,51,36,0.06)] sm:p-10">
           <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">
             Pricing and availability
           </p>
@@ -485,7 +482,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-8">
+          <div id="book" className="scroll-mt-28 mt-8">
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">
               BOOK WITH ME
             </p>
