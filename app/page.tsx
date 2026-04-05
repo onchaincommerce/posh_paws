@@ -141,16 +141,18 @@ function SectionHeading({
   title,
   description,
 }: {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   description: string;
 }) {
   return (
     <div className="max-w-2xl">
-      <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">
-        {eyebrow}
-      </p>
-      <h2 className="mt-4 font-display text-3xl tracking-tight text-[var(--color-ink)] sm:text-4xl">
+      {eyebrow ? (
+        <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">
+          {eyebrow}
+        </p>
+      ) : null}
+      <h2 className={`${eyebrow ? "mt-4" : ""} font-display text-3xl tracking-tight text-[var(--color-ink)] sm:text-4xl`}>
         {title}
       </h2>
       {description ? (
@@ -252,7 +254,7 @@ export default function Home() {
             <div className="grid gap-10 lg:grid-cols-[1.18fr_0.82fr] lg:items-start">
               <div className="flex flex-col">
                 <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">
-                  Reno-Tahoe Personalized Dog Care
+                  Reno-Tahoe
                 </p>
                 <h1 className="mt-5 max-w-2xl font-display text-5xl leading-[0.95] tracking-tight text-[var(--color-ink)] sm:text-6xl">
                   Your Pet&apos;s Favorite Vacation
@@ -369,8 +371,8 @@ export default function Home() {
           className="scroll-mt-28 rounded-[2rem] border border-[color:rgba(45,63,54,0.08)] bg-white/80 p-8 shadow-[0_18px_50px_rgba(66,51,36,0.06)] sm:p-10"
         >
           <SectionHeading
-            eyebrow="What you can count on"
-            title="Three simple reasons families trust Posh Paws"
+            eyebrow="Personalized Dog Care"
+            title="What you can count on"
             description=""
           />
 
@@ -405,11 +407,14 @@ export default function Home() {
           id="book"
           className="scroll-mt-28 rounded-[2rem] border border-[color:rgba(45,63,54,0.08)] bg-white/85 p-8 shadow-[0_18px_50px_rgba(66,51,36,0.06)] sm:p-10"
         >
-          <h2 className="font-display text-3xl tracking-tight text-[var(--color-ink)] sm:text-4xl">
-            Let&apos;s Connect
+          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">
+            Pricing and availability
+          </p>
+          <h2 className="mt-3 font-display text-3xl tracking-tight text-[var(--color-ink)] sm:text-4xl">
+            Clear From the Start
           </h2>
 
-          <div className="grid gap-5 lg:grid-cols-[21rem_minmax(0,1fr)] lg:items-start">
+          <div className="mt-6 grid gap-5 lg:grid-cols-[21rem_minmax(0,1fr)] lg:items-start">
             <aside
               id="pricing"
               className="scroll-mt-28 rounded-[1.8rem] border border-[color:rgba(45,63,54,0.08)] bg-[var(--color-card)] p-4 sm:p-5 lg:self-start"
@@ -418,20 +423,20 @@ export default function Home() {
                 {pricingCards.map((tier) => (
                   <article
                     key={tier.name}
-                    className="flex flex-col rounded-[1.6rem] border border-[color:rgba(255,255,255,0.08)] bg-[linear-gradient(180deg,rgba(45,63,54,0.98),rgba(54,81,68,0.98))] p-5 text-white shadow-[0_18px_40px_rgba(32,46,39,0.16)]"
+                    className="flex flex-col rounded-[1.6rem] border border-[color:rgba(45,63,54,0.08)] bg-[var(--color-sand)] p-5 text-[var(--color-ink)] shadow-[0_18px_40px_rgba(66,51,36,0.08)]"
                   >
-                    <h3 className="font-display text-[1.9rem] tracking-tight text-white">
+                    <h3 className="font-display text-[1.9rem] tracking-tight text-[var(--color-ink)]">
                       {tier.name}
                     </h3>
                     <p className="mt-4 flex items-baseline gap-2">
-                      <span className="font-display text-[3.35rem] leading-none tracking-tight text-white">
+                      <span className="font-display text-[3.35rem] leading-none tracking-tight text-[var(--color-ink)]">
                         {tier.price}
                       </span>
-                      <span className="text-base font-medium text-[color:rgba(250,245,239,0.76)]">
+                      <span className="text-base font-medium text-[color:rgba(40,44,34,0.64)]">
                         {tier.cadence}
                       </span>
                     </p>
-                    <p className="mt-4 text-sm leading-6 text-[color:rgba(250,245,239,0.82)]">
+                    <p className="mt-4 text-sm leading-6 text-[color:rgba(40,44,34,0.76)]">
                       {tier.note}
                     </p>
                   </article>
@@ -439,139 +444,148 @@ export default function Home() {
               </div>
             </aside>
 
-            <form
-              action="https://formspree.io/f/xojpplky"
-              method="POST"
-              onSubmit={handleInquirySubmit}
-              className="min-w-0 rounded-[1.8rem] border border-[color:rgba(45,63,54,0.08)] bg-[var(--color-card)] p-6"
-            >
-              <div className="grid gap-4 sm:mt-6 sm:grid-cols-2">
-                <label className="flex flex-col gap-2 text-sm font-medium text-[var(--color-ink)]">
-                  Owner name
-                  <input
-                    required
-                    name="ownerName"
-                    type="text"
-                    placeholder="Jordan Lee"
-                    className="rounded-[1rem] border border-[color:rgba(45,63,54,0.12)] bg-white px-4 py-3 text-base text-[var(--color-ink)] outline-none transition placeholder:text-[color:rgba(40,44,34,0.42)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[color:rgba(200,117,82,0.2)]"
-                  />
-                </label>
-                <label className="flex flex-col gap-2 text-sm font-medium text-[var(--color-ink)]">
-                  Dog name
-                  <input
-                    required
-                    name="dogName"
-                    type="text"
-                    placeholder="Maple"
-                    className="rounded-[1rem] border border-[color:rgba(45,63,54,0.12)] bg-white px-4 py-3 text-base text-[var(--color-ink)] outline-none transition placeholder:text-[color:rgba(40,44,34,0.42)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[color:rgba(200,117,82,0.2)]"
-                  />
-                </label>
-                <label className="flex flex-col gap-2 text-sm font-medium text-[var(--color-ink)] sm:col-span-2">
-                  Additional dog name(s)
-                  <input
-                    name="additionalDogs"
-                    type="text"
-                    placeholder="List any additional dogs joining the stay"
-                    className="rounded-[1rem] border border-[color:rgba(45,63,54,0.12)] bg-white px-4 py-3 text-base text-[var(--color-ink)] outline-none transition placeholder:text-[color:rgba(40,44,34,0.42)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[color:rgba(200,117,82,0.2)]"
-                  />
-                </label>
-                <label className="flex flex-col gap-2 text-sm font-medium text-[var(--color-ink)]">
-                  Check-in date
-                  <input
-                    required
-                    name="checkIn"
-                    type="date"
-                    className="rounded-[1rem] border border-[color:rgba(45,63,54,0.12)] bg-white px-4 py-3 text-base text-[var(--color-ink)] outline-none transition focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[color:rgba(200,117,82,0.2)]"
-                  />
-                </label>
-                <label className="flex flex-col gap-2 text-sm font-medium text-[var(--color-ink)]">
-                  Check-out date
-                  <input
-                    required
-                    name="checkOut"
-                    type="date"
-                    className="rounded-[1rem] border border-[color:rgba(45,63,54,0.12)] bg-white px-4 py-3 text-base text-[var(--color-ink)] outline-none transition focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[color:rgba(200,117,82,0.2)]"
-                  />
-                </label>
-                <label className="flex flex-col gap-2 text-sm font-medium text-[var(--color-ink)]">
-                  Email
-                  <input
-                    required
-                    name="email"
-                    type="email"
-                    placeholder="jordan@example.com"
-                    className="rounded-[1rem] border border-[color:rgba(45,63,54,0.12)] bg-white px-4 py-3 text-base text-[var(--color-ink)] outline-none transition placeholder:text-[color:rgba(40,44,34,0.42)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[color:rgba(200,117,82,0.2)]"
-                  />
-                </label>
-                <label className="flex flex-col gap-2 text-sm font-medium text-[var(--color-ink)]">
-                  Phone
-                  <input
-                    required
-                    name="phone"
-                    type="tel"
-                    placeholder="(555) 123-4567"
-                    className="rounded-[1rem] border border-[color:rgba(45,63,54,0.12)] bg-white px-4 py-3 text-base text-[var(--color-ink)] outline-none transition placeholder:text-[color:rgba(40,44,34,0.42)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[color:rgba(200,117,82,0.2)]"
-                  />
-                </label>
-              </div>
-
-              <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-6 py-3 text-base font-semibold text-white transition hover:bg-[var(--color-accent-dark)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
-                >
-                  {isSubmitting ? "Sending..." : "Submit Inquiry"}
-                </button>
-              </div>
-
-              {formError ? (
-                <p className="mt-4 text-sm leading-6 text-[var(--color-accent-dark)]">
-                  {formError}
+            <div className="overflow-hidden rounded-[1.8rem] border border-[color:rgba(45,63,54,0.08)] bg-[linear-gradient(180deg,rgba(45,63,54,0.98),rgba(54,81,68,0.98))] text-white shadow-[0_22px_48px_rgba(32,46,39,0.18)]">
+              <div className="border-b border-[color:rgba(255,255,255,0.12)] px-6 py-5">
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[color:rgba(255,236,221,0.82)]">
+                  Availability calendar
                 </p>
-              ) : null}
-            </form>
+              </div>
+
+              {calendarConfigured ? (
+                <iframe
+                  title="Posh Paws availability calendar"
+                  src={CALENDAR_EMBED_URL}
+                  className="min-h-[28rem] w-full border-0 bg-white"
+                  loading="lazy"
+                />
+              ) : (
+                <div className="grid gap-6 bg-[linear-gradient(135deg,rgba(45,63,54,0.94),rgba(54,81,68,0.96))] px-6 py-10 lg:grid-cols-[0.9fr_1.1fr]">
+                  <div>
+                    <h3 className="font-display text-3xl tracking-tight text-white">
+                      Calendar embed placeholder
+                    </h3>
+                    <p className="mt-4 max-w-lg text-base leading-7 text-[color:rgba(250,245,239,0.82)]">
+                      Replace <code>CALENDAR_EMBED_URL</code> in{" "}
+                      <code>app/page.tsx</code> with your Google Calendar embed link
+                      and the live availability view will render here automatically.
+                    </p>
+                  </div>
+                  <div className="rounded-[1.5rem] border border-[color:rgba(255,255,255,0.12)] bg-[color:rgba(255,255,255,0.08)] p-5">
+                    <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[color:rgba(255,236,221,0.82)]">
+                      How to wire it
+                    </p>
+                    <ol className="mt-4 space-y-3 text-sm leading-6 text-[color:rgba(250,245,239,0.82)]">
+                      <li>1. Open your Google Calendar embed settings.</li>
+                      <li>2. Copy the public embed URL for your availability calendar.</li>
+                      <li>3. Paste it into the constant at the top of this page file.</li>
+                    </ol>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
 
-          <div className="mt-10 overflow-hidden rounded-[1.8rem] border border-[color:rgba(45,63,54,0.08)] bg-[linear-gradient(180deg,rgba(45,63,54,0.98),rgba(54,81,68,0.98))] text-white shadow-[0_22px_48px_rgba(32,46,39,0.18)]">
-            <div className="border-b border-[color:rgba(255,255,255,0.12)] px-6 py-5">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[color:rgba(255,236,221,0.82)]">
-                Availability calendar
-              </p>
+          <div className="mt-8">
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">
+              Book with me
+            </p>
+            <h2 className="mt-3 font-display text-3xl tracking-tight text-[var(--color-ink)] sm:text-4xl">
+              Let&apos;s Connect
+            </h2>
+          </div>
+
+          <form
+            action="https://formspree.io/f/xojpplky"
+            method="POST"
+            onSubmit={handleInquirySubmit}
+            className="mt-5 min-w-0 rounded-[1.8rem] border border-[color:rgba(45,63,54,0.08)] bg-[var(--color-card)] p-6"
+          >
+            <div className="grid gap-4 sm:mt-6 sm:grid-cols-2">
+              <label className="flex flex-col gap-2 text-sm font-medium text-[var(--color-ink)]">
+                Owner name
+                <input
+                  required
+                  name="ownerName"
+                  type="text"
+                  placeholder="Jordan Lee"
+                  className="rounded-[1rem] border border-[color:rgba(45,63,54,0.12)] bg-white px-4 py-3 text-base text-[var(--color-ink)] outline-none transition placeholder:text-[color:rgba(40,44,34,0.42)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[color:rgba(200,117,82,0.2)]"
+                />
+              </label>
+              <label className="flex flex-col gap-2 text-sm font-medium text-[var(--color-ink)]">
+                Dog name
+                <input
+                  required
+                  name="dogName"
+                  type="text"
+                  placeholder="Maple"
+                  className="rounded-[1rem] border border-[color:rgba(45,63,54,0.12)] bg-white px-4 py-3 text-base text-[var(--color-ink)] outline-none transition placeholder:text-[color:rgba(40,44,34,0.42)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[color:rgba(200,117,82,0.2)]"
+                />
+              </label>
+              <label className="flex flex-col gap-2 text-sm font-medium text-[var(--color-ink)] sm:col-span-2">
+                Additional dog name(s)
+                <input
+                  name="additionalDogs"
+                  type="text"
+                  placeholder="List any additional dogs joining the stay"
+                  className="rounded-[1rem] border border-[color:rgba(45,63,54,0.12)] bg-white px-4 py-3 text-base text-[var(--color-ink)] outline-none transition placeholder:text-[color:rgba(40,44,34,0.42)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[color:rgba(200,117,82,0.2)]"
+                />
+              </label>
+              <label className="flex flex-col gap-2 text-sm font-medium text-[var(--color-ink)]">
+                Check-in date
+                <input
+                  required
+                  name="checkIn"
+                  type="date"
+                  className="rounded-[1rem] border border-[color:rgba(45,63,54,0.12)] bg-white px-4 py-3 text-base text-[var(--color-ink)] outline-none transition focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[color:rgba(200,117,82,0.2)]"
+                />
+              </label>
+              <label className="flex flex-col gap-2 text-sm font-medium text-[var(--color-ink)]">
+                Check-out date
+                <input
+                  required
+                  name="checkOut"
+                  type="date"
+                  className="rounded-[1rem] border border-[color:rgba(45,63,54,0.12)] bg-white px-4 py-3 text-base text-[var(--color-ink)] outline-none transition focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[color:rgba(200,117,82,0.2)]"
+                />
+              </label>
+              <label className="flex flex-col gap-2 text-sm font-medium text-[var(--color-ink)]">
+                Email
+                <input
+                  required
+                  name="email"
+                  type="email"
+                  placeholder="jordan@example.com"
+                  className="rounded-[1rem] border border-[color:rgba(45,63,54,0.12)] bg-white px-4 py-3 text-base text-[var(--color-ink)] outline-none transition placeholder:text-[color:rgba(40,44,34,0.42)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[color:rgba(200,117,82,0.2)]"
+                />
+              </label>
+              <label className="flex flex-col gap-2 text-sm font-medium text-[var(--color-ink)]">
+                Phone
+                <input
+                  required
+                  name="phone"
+                  type="tel"
+                  placeholder="(555) 123-4567"
+                  className="rounded-[1rem] border border-[color:rgba(45,63,54,0.12)] bg-white px-4 py-3 text-base text-[var(--color-ink)] outline-none transition placeholder:text-[color:rgba(40,44,34,0.42)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[color:rgba(200,117,82,0.2)]"
+                />
+              </label>
             </div>
 
-            {calendarConfigured ? (
-              <iframe
-                title="Posh Paws availability calendar"
-                src={CALENDAR_EMBED_URL}
-                className="min-h-[28rem] w-full border-0 bg-white"
-                loading="lazy"
-              />
-            ) : (
-              <div className="grid gap-6 bg-[linear-gradient(135deg,rgba(45,63,54,0.94),rgba(54,81,68,0.96))] px-6 py-10 lg:grid-cols-[0.9fr_1.1fr]">
-                <div>
-                  <h3 className="font-display text-3xl tracking-tight text-white">
-                    Calendar embed placeholder
-                  </h3>
-                  <p className="mt-4 max-w-lg text-base leading-7 text-[color:rgba(250,245,239,0.82)]">
-                    Replace <code>CALENDAR_EMBED_URL</code> in{" "}
-                    <code>app/page.tsx</code> with your Google Calendar embed link
-                    and the live availability view will render here automatically.
-                  </p>
-                </div>
-                <div className="rounded-[1.5rem] border border-[color:rgba(255,255,255,0.12)] bg-[color:rgba(255,255,255,0.08)] p-5">
-                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[color:rgba(255,236,221,0.82)]">
-                    How to wire it
-                  </p>
-                  <ol className="mt-4 space-y-3 text-sm leading-6 text-[color:rgba(250,245,239,0.82)]">
-                    <li>1. Open your Google Calendar embed settings.</li>
-                    <li>2. Copy the public embed URL for your availability calendar.</li>
-                    <li>3. Paste it into the constant at the top of this page file.</li>
-                  </ol>
-                </div>
-              </div>
-            )}
-          </div>
+            <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-6 py-3 text-base font-semibold text-white transition hover:bg-[var(--color-accent-dark)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+              >
+                {isSubmitting ? "Sending..." : "Submit Inquiry"}
+              </button>
+            </div>
+
+            {formError ? (
+              <p className="mt-4 text-sm leading-6 text-[var(--color-accent-dark)]">
+                {formError}
+              </p>
+            ) : null}
+          </form>
         </section>
 
       </main>
