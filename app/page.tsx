@@ -38,7 +38,7 @@ const CALENDAR_EMBED_URL =
 
 const navigationLinks: NavLink[] = [
   { href: "#pricing", label: "Pricing" },
-  { href: "#book", label: "Let's Connect" },
+  { href: "#book", label: "Let's connect" },
 ];
 
 const benefitCards: BenefitCard[] = [
@@ -70,7 +70,7 @@ const pricingCards: PricingCard[] = [
     note: "+$30 for each additional dog.",
   },
   {
-    name: "Extended and holiday stays",
+    name: "Holiday stays",
     price: "$60",
     cadence: "/ night",
     note: "+$40 for each additional dog.",
@@ -257,7 +257,7 @@ export default function Home() {
                   Reno-Tahoe
                 </p>
                 <h1 className="mt-5 max-w-2xl font-display text-5xl leading-[0.95] tracking-tight text-[var(--color-ink)] sm:text-6xl">
-                  Your Pet&apos;s Favorite Vacation
+                  Your pet&apos;s favorite vacation
                 </h1>
                 <p className="mt-6 max-w-2xl text-lg leading-8 text-[color:rgba(40,44,34,0.78)]">
                   Private luxury boarding with 24/7 personalized care, daily
@@ -287,7 +287,7 @@ export default function Home() {
             <div className="flex flex-col gap-6 p-1 sm:p-2">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.26em] text-[var(--color-accent)]">
-                  5 Star Rating
+                  5 star rating
                 </p>
                 <blockquote className="mt-4 max-w-[26rem] font-display text-[1.85rem] leading-[1.1] tracking-tight text-[var(--color-ink)] sm:text-[2.15rem] lg:text-[2.3rem]">
                   “Raquel was our pups’ home away from home. She was incredibly
@@ -372,7 +372,7 @@ export default function Home() {
         >
           <SectionHeading
             eyebrow="Personalized Dog Care"
-            title="What you can count on"
+            title="Count on us"
             description=""
           />
 
@@ -411,7 +411,7 @@ export default function Home() {
             Pricing and availability
           </p>
           <h2 className="mt-3 font-display text-3xl tracking-tight text-[var(--color-ink)] sm:text-4xl">
-            Clear From the Start
+            Clear from the start
           </h2>
 
           <div className="mt-6 grid gap-5 lg:grid-cols-[21rem_minmax(0,1fr)] lg:items-start">
@@ -487,10 +487,10 @@ export default function Home() {
 
           <div className="mt-8">
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">
-              Book with me
+              BOOK WITH ME
             </p>
             <h2 className="mt-3 font-display text-3xl tracking-tight text-[var(--color-ink)] sm:text-4xl">
-              Let&apos;s Connect
+              Let&apos;s connect
             </h2>
           </div>
 
@@ -608,7 +608,7 @@ export default function Home() {
             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[var(--color-accent)]">
-                  Inquiry received
+                  INQUIRY RECEIVED
                 </p>
                 <h2
                   id="inquiry-success-title"
