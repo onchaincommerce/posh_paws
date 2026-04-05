@@ -228,13 +228,8 @@ export default function Home() {
               priority
               className="h-14 w-14 rounded-full border border-[color:rgba(45,63,54,0.08)] bg-white object-cover shadow-[0_10px_24px_rgba(66,51,36,0.08)]"
             />
-            <span>
-              <span className="block font-display text-xl tracking-tight text-[var(--color-ink)]">
-                Posh Paws
-              </span>
-              <span className="block text-sm text-[color:rgba(40,44,34,0.72)]">
-                Reno-Tahoe Personalized Dog Care
-              </span>
+            <span className="block font-display text-xl tracking-tight text-[var(--color-ink)]">
+              Posh Paws
             </span>
           </a>
 
@@ -255,7 +250,7 @@ export default function Home() {
       <main id="top" className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 pb-16 pt-6 sm:px-6 lg:px-8 lg:pb-24">
         <section className="scroll-mt-28">
           <div className="overflow-hidden rounded-[2rem] border border-[color:rgba(45,63,54,0.08)] bg-[var(--color-card)] p-8 shadow-[0_28px_80px_rgba(66,51,36,0.09)] sm:p-10">
-            <div className="grid gap-10 lg:grid-cols-[1.18fr_0.82fr] lg:items-stretch">
+            <div className="grid gap-10 lg:grid-cols-[1.18fr_0.82fr] lg:items-start">
               <div className="flex flex-col">
                 <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">
                   Reno-Tahoe Personalized Dog Care
@@ -268,24 +263,9 @@ export default function Home() {
                   photo updates, and a safe home environment, so you can travel
                   with peace of mind.
                 </p>
-
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <a
-                    href="#book"
-                    className="inline-flex items-center justify-center rounded-full bg-[var(--color-forest)] px-6 py-3 text-base font-semibold text-white transition hover:bg-[var(--color-forest-deep)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
-                  >
-                    Let&apos;s Connect
-                  </a>
-                  <a
-                    href="#pricing"
-                    className="inline-flex items-center justify-center rounded-full border border-[color:rgba(45,63,54,0.12)] bg-white px-6 py-3 text-base font-semibold text-[var(--color-ink)] transition hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
-                  >
-                    View Pricing
-                  </a>
-                </div>
               </div>
 
-              <div className="flex items-center justify-center">
+              <div className="flex items-start justify-center lg:-mt-8">
                 <div className="relative aspect-square w-full max-w-[24rem] overflow-hidden rounded-[1.8rem] bg-transparent">
                   <Image
                     src="/public.png"
@@ -293,7 +273,7 @@ export default function Home() {
                     fill
                     unoptimized
                     sizes="(min-width: 1024px) 24rem, 78vw"
-                    className="object-contain"
+                    className="object-contain object-top"
                   />
                 </div>
               </div>
