@@ -409,12 +409,41 @@ export default function Home() {
             Let&apos;s Connect
           </h2>
 
-          <div className="grid gap-5 lg:grid-cols-[1fr_0.48fr]">
+          <div className="grid gap-5 lg:grid-cols-[21rem_minmax(0,1fr)] lg:items-start">
+            <aside
+              id="pricing"
+              className="scroll-mt-28 rounded-[1.8rem] border border-[color:rgba(45,63,54,0.08)] bg-[var(--color-card)] p-4 sm:p-5 lg:self-start"
+            >
+              <div className="space-y-4">
+                {pricingCards.map((tier) => (
+                  <article
+                    key={tier.name}
+                    className="flex flex-col rounded-[1.6rem] border border-[color:rgba(255,255,255,0.08)] bg-[linear-gradient(180deg,rgba(45,63,54,0.98),rgba(54,81,68,0.98))] p-5 text-white shadow-[0_18px_40px_rgba(32,46,39,0.16)]"
+                  >
+                    <h3 className="font-display text-[1.9rem] tracking-tight text-white">
+                      {tier.name}
+                    </h3>
+                    <p className="mt-4 flex items-baseline gap-2">
+                      <span className="font-display text-[3.35rem] leading-none tracking-tight text-white">
+                        {tier.price}
+                      </span>
+                      <span className="text-base font-medium text-[color:rgba(250,245,239,0.76)]">
+                        {tier.cadence}
+                      </span>
+                    </p>
+                    <p className="mt-4 text-sm leading-6 text-[color:rgba(250,245,239,0.82)]">
+                      {tier.note}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </aside>
+
             <form
               action="https://formspree.io/f/xojpplky"
               method="POST"
               onSubmit={handleInquirySubmit}
-              className="rounded-[1.8rem] border border-[color:rgba(45,63,54,0.08)] bg-[var(--color-card)] p-6"
+              className="min-w-0 rounded-[1.8rem] border border-[color:rgba(45,63,54,0.08)] bg-[var(--color-card)] p-6"
             >
               <div className="grid gap-4 sm:mt-6 sm:grid-cols-2">
                 <label className="flex flex-col gap-2 text-sm font-medium text-[var(--color-ink)]">
@@ -502,35 +531,6 @@ export default function Home() {
                 </p>
               ) : null}
             </form>
-
-            <aside
-              id="pricing"
-              className="scroll-mt-28 rounded-[1.8rem] border border-[color:rgba(45,63,54,0.08)] bg-[var(--color-card)] p-4 sm:p-5"
-            >
-              <div className="space-y-4">
-                {pricingCards.map((tier) => (
-                  <article
-                    key={tier.name}
-                    className="flex flex-col rounded-[1.6rem] border border-[color:rgba(255,255,255,0.08)] bg-[linear-gradient(180deg,rgba(45,63,54,0.98),rgba(54,81,68,0.98))] p-5 text-white shadow-[0_18px_40px_rgba(32,46,39,0.16)]"
-                  >
-                    <h3 className="font-display text-[1.9rem] tracking-tight text-white">
-                      {tier.name}
-                    </h3>
-                    <p className="mt-4 flex items-baseline gap-2">
-                      <span className="font-display text-[3.35rem] leading-none tracking-tight text-white">
-                        {tier.price}
-                      </span>
-                      <span className="text-base font-medium text-[color:rgba(250,245,239,0.76)]">
-                        {tier.cadence}
-                      </span>
-                    </p>
-                    <p className="mt-4 text-sm leading-6 text-[color:rgba(250,245,239,0.82)]">
-                      {tier.note}
-                    </p>
-                  </article>
-                ))}
-              </div>
-            </aside>
           </div>
 
           <div className="mt-10 overflow-hidden rounded-[1.8rem] border border-[color:rgba(45,63,54,0.08)] bg-[linear-gradient(180deg,rgba(45,63,54,0.98),rgba(54,81,68,0.98))] text-white shadow-[0_22px_48px_rgba(32,46,39,0.18)]">
