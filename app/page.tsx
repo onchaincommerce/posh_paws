@@ -73,13 +73,13 @@ const pricingCards: PricingCard[] = [
     name: "Overnight boarding",
     price: "$50",
     cadence: "/ first dog",
-    note: "+$30 for each additional dog.",
+    note: "+$35 for each additional dog.",
   },
   {
     name: "Holiday stays",
     price: "$60",
     cadence: "/ night",
-    note: "+$40 for each additional dog.",
+    note: "+$45 for each additional dog.",
   },
 ];
 
